@@ -2,7 +2,7 @@ README, radiometricCalibration project.
 
 This project is my own implementation of the following paper:
 
-S. Lin, J. Gu, S. Yamazaki, and H.-Y. Shum. Radiometric calibration from a single image. 
+S.Lin, J.Gu, S.Yamazaki, and H.-Y. Shum. Radiometric calibration from a single image. 
 In IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2004.
 
 In general, I found it very hard to obtain stable and reliable results across
