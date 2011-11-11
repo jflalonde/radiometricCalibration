@@ -8,7 +8,7 @@
 %   
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function [brightness, invBrightness] = loadDatabaseOfResponseFunction(basePath)
+function [brightness, invBrightness] = loadDatabaseOfResponseFunction(filePath)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Copyright 2006-2008 Jean-Francois Lalonde
 % Carnegie Mellon University
@@ -16,7 +16,11 @@ function [brightness, invBrightness] = loadDatabaseOfResponseFunction(basePath)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Setup
-dorfFile = fullfile(basePath, 'cameraResponses', 'dorf', 'dorfCurves.txt');
+if ~isempty(strfind(filePath, '.txt'))
+    dorfFile = filePath;
+else
+    dorfFile = fullfile(basePath, 'cameraResponses', 'dorf', 'dorfCurves.txt');
+end
 
 %% Open the file
 fileHandle = fopen(dorfFile, 'r');
