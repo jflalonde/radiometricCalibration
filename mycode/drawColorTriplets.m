@@ -1,19 +1,11 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% function drawColorTriplets(img, edgeMap, patchSize, colorTriplets)
-%  
-% 
-% Input parameters:
-%
-% Output parameters:
-%   
-% 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function drawColorTriplets(figHandle, img, edgeMap, patchSize, edgeCoords)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Copyright 2006-2008 Jean-Francois Lalonde
-% Carnegie Mellon University
-% Do not distribute
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Draws the color triplets found on the image
+%
+% See also:
+%   findColorTriplets
+%
+% ----------
+% Jean-Francois Lalonde
 
 figure(figHandle); imshow(img); hold on;
 patchHalfSize = floor(patchSize ./ 2);

@@ -1,21 +1,9 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% function colorTriplets = findColorTriplets(img, edgeMap, patchSize, ...
-%     colorDiffThreshold, varianceThreshold)
-%  
-% 
-% Input parameters:
+function [colorTriplets, edgeCoords, colorDiffs, maxVariances, tripletToEdgeInd, edgeMap] = ...
+    findColorTriplets(img, patchSize, colorDiffThreshold, varianceThreshold, areaDiffThreshold, minVarStraight, varargin)
+% Extracts color triplets at edges in the image
 %
-% Output parameters:
-%   
-% 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function [colorTriplets, edgeCoords, colorDiffs, maxVariances, tripletToEdgeInd, edgeMap] = findColorTriplets(img, patchSize, ...
-    colorDiffThreshold, varianceThreshold, areaDiffThreshold, minVarStraight, varargin)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Copyright 2006-2008 Jean-Francois Lalonde
-% Carnegie Mellon University
-% Do not distribute
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ----------
+% Jean-Francois Lalonde
 
 %% Parse optional arguments
 defaultArgs = struct('DoDisplay', 0, 'Verbose', 0, 'SceneMask', [], 'MaxNbEdges', 0);

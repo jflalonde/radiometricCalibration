@@ -1,19 +1,8 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% function optimizeInvCameraResponse
-%  
-% 
-% Input parameters:
-%
-% Output parameters:
-%   
-% 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function gOpt = optimizeInvCameraResponse(gmmMix, pcaMean, pcaBases, brightnessTriplets, lambda, varargin)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Copyright 2006-2008 Jean-Francois Lalonde
-% Carnegie Mellon University
-% Do not distribute
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Optimizes the energy function to recover the inverse response function
+% 
+% ----------
+% Jean-Francois Lalonde
 
 %% Parse optional arguments
 defaultArgs = struct('DoDisplay', 0, 'Verbose', 0);
