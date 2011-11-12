@@ -41,8 +41,14 @@ load(gmmPath);
 
 %% Optimize
 invCamResponseEst = optimizeInvCameraResponse(gmmInvMix, pcaInvMean, pcaInvBases, ...
-    colorTriplets, lambdaPrior, 'DoDisplay', args.DoDisplay);
+    colorTriplets, lambdaPrior);
 
 %% Display
-plot(invCamResponseEst); grid on; axis equal;
-figure('Estimated inverse response function');
+pHandle = figure(1);
+set(pHandle, 'DefaultAxesColorOrder',[1 0 0;0 1 0;0 0 1])
+plot(linspace(0,1,100), invCamResponseEst, 'LineWidth', 3);
+legend('R', 'G', 'B', 'Location', 'NorthWest');
+title(sprintf('Estimated inverse response function, sequence %s', seqInfo.sequence.name));
+xlabel('Normalized intensity'), ylabel('Normalized irradiance');
+axis([0 1 0 1]); grid on;
+
