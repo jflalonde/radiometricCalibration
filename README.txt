@@ -17,3 +17,8 @@ if you find a good way around this!
 3. Run 'demoRadiometricCalibration.m';
 4. That's it!
 
+== ADDITIONAL NOTES ==
+
+Make sure you download my "utils" repository available at:
+
+https://github.com/jflalonde/utils
