@@ -8,12 +8,15 @@
 %   
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function [brightness, invBrightness] = loadDatabaseOfResponseFunction(filePath)
+function [brightness, invBrightness] = loadDatabaseOfResponseFunction(filePath, varargin)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Copyright 2006-2008 Jean-Francois Lalonde
 % Carnegie Mellon University
 % Do not distribute
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+defaultArgs = struct('Downsample', 1);
+args = parseargs(defaultArgs, varargin{:});
 
 %% Setup
 if ~isempty(strfind(filePath, '.txt'))
@@ -37,13 +40,21 @@ irradiance = dataPoints{1}(:,1); % they're all the same
 brightness = cell2mat(cellfun(@(x) x(:,2), dataPoints, 'UniformOutput', 0));
 
 %% Downsample
-% 100 data points instead of 1024
-brightness = interp1(irradiance, brightness, linspace(0, 1, 100), 'spline');
-
-% computing inverse response function
-invBrightness = zeros(size(brightness));
-for i=1:size(invBrightness, 2)
-    invBrightness(:,i) = getInverseResponse(brightness(:,i), linspace(0, 1, 100));
+if args.Downsample
+    % 100 data points instead of 1024
+    brightness = interp1(irradiance, brightness, linspace(0, 1, 100), 'spline');
+    
+    % computing inverse response function
+    invBrightness = zeros(size(brightness));
+    for i=1:size(invBrightness, 2)
+        invBrightness(:,i) = getInverseResponse(brightness(:,i), linspace(0, 1, 100));
+    end
+else
+    if nargout > 1
+        warning('loadDatabaseOfResponseFunction:noInv', ...
+            'No inverse response function returned if downsampling is enabled!');
+    end
+    invBrightness = [];
 end
 
 
