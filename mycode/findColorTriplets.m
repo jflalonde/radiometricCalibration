@@ -126,7 +126,7 @@ while nnz(remainingEdgeMap) && nbCheckedEdges < args.MaxNbEdges
     centerPatchColRange = patchC(curInd)-centerPatchHalfSize(2):patchC(curInd)+centerPatchHalfSize(2);
 
     centerSqColorPatch = img(centerPatchRowRange, centerPatchColRange, :);
-    centerEdgeColor = reshape(centerSqColorPatch, size(centerSqColorPatch,3), size(centerSqColorPatch,1)*size(centerSqColorPatch,2));
+    centerEdgeColor = reshape(permute(centerSqColorPatch, [3 1 2]), [], size(centerSqColorPatch,1)*size(centerSqColorPatch,2));
     nbCenterEdges = size(centerEdgeColor, 2);
     
     % check for monotonicity: if the edge color lies within the bounding
